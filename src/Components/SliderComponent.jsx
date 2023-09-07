@@ -5,8 +5,6 @@ import { Stack } from "@mui/system";
 import MuiInput from "@mui/material/Input";
 import { styled } from "@mui/material/styles";
 
-import { useState } from "react";
-
 const Input = styled(MuiInput)`
   width: 60px;
 `;
@@ -17,17 +15,10 @@ const SliderComponent = ({
   max,
   label,
   unit,
-  onChange,
-  amount,
-  value,
-
   value2,
   setValue2,
-
   steps,
 }) => {
-  // const [value2, setValue2] = useState(defaultValue);
-
   const handleSliderChange = (event, newValue) => {
     setValue2(newValue);
   };
@@ -50,9 +41,7 @@ const SliderComponent = ({
         <Typography variant="h5">{label}</Typography>
         <Typography variant="h6">
           {/* {unit} {amount} */}
-          {/* {unit} */}
           <Input
-            // style={"margin-left: 10px"}
             value={value2}
             size="small"
             onChange={handleInputChange}

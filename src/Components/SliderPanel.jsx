@@ -1,6 +1,6 @@
 import SliderComponent from "./SliderComponent";
 import { useState, useEffect } from "react";
-import { Button, Stack, Divider } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 
 import {
   getPrevNumDiv10,
@@ -60,30 +60,9 @@ const SliderPanel = () => {
     );
 
     setValautonomia(autonomia_litros(valcantlitros, valconsumo100));
-    // setData({
-    //   ...data,
-    //   //Consumo100: valconsumo100,
-    //   //ConsumoKm: valconsumo100 / 100,
-    //   //Autonomia: Number((data.Litros / (valconsumo100 / 100)).toFixed(0)),
-    //   MinAutonomia: getNextNumDiv10(
-    //     (data.MinLitros / (valconsumo100 / 100)).toFixed(0)
-    //   ),
-    //   MaxAutonomia: getNextNumDiv10(
-    //     (data.MaxLitros / (valconsumo100 / 100)).toFixed(0)
-    //   ),
-    // });
-    //return () => {};
   }, [valconsumo100]);
 
   useEffect(() => {
-    // setData({
-    //   ...data,
-    //   //PrecioLitro: valpreciolitro,
-    //   //Coste: Number((data.Litros * valpreciolitro).toFixed(1)),
-    //   MinCoste: Number((valpreciolitro * data.MinLitros).toFixed(1)),
-    //   MaxCoste: Number((valpreciolitro * data.MaxLitros).toFixed(0)),
-    // });
-
     setValmincoste(coste_litros(Ctes.minLitros, valpreciolitro));
     setValmaxcoste(coste_litros(Ctes.maxLitros, valpreciolitro));
 
@@ -113,30 +92,6 @@ const SliderPanel = () => {
       <SliderComponent
         value2={valconsumo100}
         setValue2={setValconsumo100}
-        // onChange={(e, value) => {
-        //   setData({
-        //     ...data,
-        //     Consumo100: value,
-        //     ConsumoKm: value / 100,
-        //     Autonomia: Number((data.Litros / (value / 100)).toFixed(0)),
-        //     MinAutonomia: getNextNumDiv10(
-        //       (data.MinLitros / (value / 100)).toFixed(0)
-        //     ),
-        //     MaxAutonomia: getNextNumDiv10(
-        //       (data.MaxLitros / (value / 100)).toFixed(0)
-        //     ),
-        //   });
-        // }}
-        // handleInputChange={(e) => {
-        //   setData({
-        //     ...data,
-        //     Consumo100: handleChanges(
-        //       data.minConsumo100,
-        //       data.maxConsumo100,
-        //       e.target.value
-        //     ),
-        //   });
-        // }}
         defaultValue={valconsumo100}
         min={minConsumo100}
         max={maxConsumo100}
@@ -144,7 +99,6 @@ const SliderPanel = () => {
         unit="L"
         // amount={data.Consumo100}
         label="Consumo 100Km"
-        // value={data.Consumo100}
       />
 
       <Divider sx={styleDivider} />
@@ -152,15 +106,6 @@ const SliderPanel = () => {
       <SliderComponent
         value2={valpreciolitro}
         setValue2={setValpreciolitro}
-        // onChange={(e, value) => {
-        //   setData({
-        //     ...data,
-        //     PrecioLitro: value,
-        //     Coste: Number((data.Litros * value).toFixed(1)),
-        //     MinCoste: Number((value * data.MinLitros).toFixed(1)),
-        //     MaxCoste: Number((value * data.MaxLitros).toFixed(0)),
-        //   });
-        // }}
         defaultValue={valpreciolitro}
         min={minPrecioLitro}
         max={maxPrecioLitro}
@@ -168,7 +113,6 @@ const SliderPanel = () => {
         unit="€"
         // amount={data.PrecioLitro}
         label="Precio Litro"
-        // value={data.PrecioLitro}
       />
 
       <Divider sx={styleDivider} />
@@ -176,14 +120,6 @@ const SliderPanel = () => {
       <SliderComponent
         value2={valautonomia}
         setValue2={setValautonomia}
-        // onChange={(e, value) => {
-        //   setData({
-        //     ...data,
-        //     Autonomia: value,
-        //     Litros: Number((value * ConsumoKm).toFixed(1)),
-        //     Coste: Number((value * ConsumoKm * data.PrecioLitro).toFixed(1)),
-        //   });
-        // }}
         defaultValue={valautonomia}
         min={valminautonomia}
         max={valmaxautonomia}
@@ -191,7 +127,6 @@ const SliderPanel = () => {
         unit="Km"
         // amount={data.Autonomia}
         label="Autonomia"
-        // value={data.Autonomia}
       />
       <Button
         // className="btncalculo"
@@ -214,14 +149,6 @@ const SliderPanel = () => {
       <SliderComponent
         value2={valcantlitros}
         setValue2={setValcantlitros}
-        // onChange={(e, value) => {
-        //   setData({
-        //     ...data,
-        //     Litros: value,
-        //     Coste: Number((value * data.PrecioLitro).toFixed(1)),
-        //     Autonomia: Number((value / ConsumoKm).toFixed(0)),
-        //   });
-        // }}
         defaultValue={valcantlitros}
         min={Ctes.minLitros}
         max={Ctes.maxLitros}
@@ -229,7 +156,6 @@ const SliderPanel = () => {
         unit="L"
         // amount={data.Litros}
         label="Cantidad Fuel"
-        // value={data.Litros}
       />
       <Button
         sx={styleBtnCalc}
@@ -249,16 +175,6 @@ const SliderPanel = () => {
       <SliderComponent
         value2={valcoste}
         setValue2={setValcoste}
-        // onChange={(e, value) => {
-        //   setData({
-        //     ...data,
-        //     Coste: value,
-        //     Litros: Number((value / data.PrecioLitro).toFixed(1)),
-        //     Autonomia: Number(
-        //       (value / data.PrecioLitro / ConsumoKm).toFixed(0)
-        //     ),
-        //   });
-        // }}
         defaultValue={valcoste}
         min={valmincoste}
         max={valmaxcoste}
@@ -266,7 +182,6 @@ const SliderPanel = () => {
         unit="€"
         // amount={data.Coste}
         label="Coste"
-        // value={data.Coste}
       />
       <Button
         sx={styleBtnCalc}
