@@ -5,9 +5,7 @@ import { Stack } from "@mui/system";
 import MuiInput from "@mui/material/Input";
 import { IconButton, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-// import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-// import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import * as Icons from "@mui/icons-material";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
 const Input = styled(MuiInput)`
   width: 100px;
@@ -104,7 +102,7 @@ const SliderComponent = ({
 
         <Grid>
           <IconButton size="small" onClick={handleDecClick}>
-            <Icons.ArrowLeft fontSize="medium" color="primary" />
+            <ArrowLeft fontSize="medium" color="primary" />
           </IconButton>
           <Input
             value={value2}
@@ -130,7 +128,7 @@ const SliderComponent = ({
             }}
           />
           <IconButton size="small" onClick={handleIncClick}>
-            <Icons.ArrowRight fontSize="medium" color="secondary" />
+            <ArrowRight fontSize="medium" color="secondary" />
           </IconButton>
           {/* </Typography> */}
         </Grid>

@@ -18,7 +18,7 @@ const SliderPanel = () => {
   // const ConsumoKm = data.Consumo100 / 100;
   const styleBtnCalc = {
     borderRadius: 10,
-    width: 200,
+    width: 150,
   };
 
   const styleDivider = {
