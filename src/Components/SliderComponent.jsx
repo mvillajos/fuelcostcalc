@@ -1,13 +1,22 @@
 // import React from "react";
 import Slider from "@mui/material/Slider";
-import { Typography } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import { Stack } from "@mui/system";
 import MuiInput from "@mui/material/Input";
+import { IconButton, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+// import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+// import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import * as Icons from "@mui/icons-material";
 
 const Input = styled(MuiInput)`
-  width: 60px;
+  width: 100px;
 `;
+
+const styleBtnCalc = {
+  borderRadius: 10,
+  width: 100,
+};
 
 const SliderComponent = ({
   defaultValue,
@@ -18,6 +27,8 @@ const SliderComponent = ({
   value2,
   setValue2,
   steps,
+  handleRecalc,
+  textoBtnRecalc,
 }) => {
   const handleSliderChange = (event, newValue) => {
     setValue2(newValue);
@@ -35,12 +46,66 @@ const SliderComponent = ({
     }
   };
 
+  const handleDecClick = () => {
+    const strnum = steps.toString();
+    let numdec = 0;
+    if (strnum.includes(".")) {
+      let partenum = strnum.split(".");
+      numdec = partenum[1].toString().length;
+    }
+    let newValue = Number((value2 - steps).toFixed(numdec));
+
+    if (newValue < min) {
+      newValue = min;
+    }
+
+    setValue2(newValue);
+  };
+
+  const handleIncClick = () => {
+    const strnum = steps.toString();
+    let numdec = 0;
+    if (strnum.includes(".")) {
+      let partenum = strnum.split(".");
+      numdec = partenum[1].toString().length;
+    }
+    let newValue = Number((value2 + steps).toFixed(numdec));
+
+    if (newValue > max) {
+      newValue = max;
+    }
+
+    setValue2(newValue);
+  };
+
   return (
-    <Stack my={1.4}>
-      <Stack gap={1}>
-        <Typography variant="h5">{label}</Typography>
-        <Typography variant="h6">
-          {/* {unit} {amount} */}
+    <Stack my={0}>
+      <Stack gap={0.5}>
+        {/* <Typography variant="h6"> */}
+        {/* {unit} {amount} */}
+        <Grid container spacing={5} alignItems="space-between">
+          <Grid item>
+            <Typography variant="h6">{label}</Typography>
+          </Grid>
+          {/* <Grid item>
+            {textoBtnRecalc && (
+              <Button
+                sx={styleBtnCalc}
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={handleRecalc}
+              >
+                {textoBtnRecalc}
+              </Button>
+            )}
+          </Grid> */}
+        </Grid>
+
+        <Grid>
+          <IconButton size="small" onClick={handleDecClick}>
+            <Icons.ArrowLeft fontSize="medium" color="primary" />
+          </IconButton>
           <Input
             value={value2}
             size="small"
@@ -50,34 +115,69 @@ const SliderComponent = ({
               step: steps,
               min: min,
               max: max,
+              style: { textAlign: "center" },
               type: "number",
               "aria-labelledby": "input-slider",
             }}
+            sx={{
+              "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+                {
+                  display: "none",
+                },
+              "& input[type=number]": {
+                MozAppearance: "textfield",
+              },
+            }}
           />
-        </Typography>
+          <IconButton size="small" onClick={handleIncClick}>
+            <Icons.ArrowRight fontSize="medium" color="secondary" />
+          </IconButton>
+          {/* </Typography> */}
+        </Grid>
       </Stack>
-      <Slider
-        min={min}
-        max={max}
-        defaultValue={defaultValue}
-        aria-label="Default"
-        valueLabelDisplay="auto"
-        // onChange={onChange}
-        onChange={handleSliderChange}
-        value={value2}
-        marks
-        step={steps}
-        aria-labelledby="input-slider"
-      />
 
-      <Stack direction="row" justifyContent="space-between">
-        <Typography variant="subtitle1" color="text.secondary">
+      <Grid container spacing={1} justifyContent={"space-between"}>
+        <Grid item>{min}</Grid>
+        <Grid item xs={textoBtnRecalc ? 9 : 11}>
+          <Slider
+            min={min}
+            max={max}
+            defaultValue={defaultValue}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            // onChange={onChange}
+            onChange={handleSliderChange}
+            value={value2}
+            marks
+            step={steps}
+            aria-labelledby="input-slider"
+          />
+        </Grid>
+        <Grid item>{max}</Grid>
+
+        <Grid item alignContent={"flex-end"}>
+          {textoBtnRecalc && (
+            <Button
+              sx={styleBtnCalc}
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={handleRecalc}
+            >
+              {textoBtnRecalc}
+            </Button>
+          )}
+        </Grid>
+      </Grid>
+
+      {/* <Stack direction="row" justifyContent="space-between">
+        <Typography variant="" color="text.secondary">
           {unit} {min}
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
+        <Typography variant="" color="text.secondary">
           {unit} {max}
         </Typography>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 };

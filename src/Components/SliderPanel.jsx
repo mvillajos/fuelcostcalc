@@ -11,8 +11,8 @@ import {
   litros_coste,
   autonomia_coste,
   autonomia_litros,
-} from "../userFunctions";
-import { defaultValues, defaultCalcValues, Ctes } from "../constants";
+} from "../PureJS/userFunctions";
+import { defaultValues, defaultCalcValues, Ctes } from "../PureJS/constants";
 
 const SliderPanel = () => {
   // const ConsumoKm = data.Consumo100 / 100;
@@ -22,9 +22,9 @@ const SliderPanel = () => {
   };
 
   const styleDivider = {
-    marginTop: "20px",
-    marginBottom: "20px",
-    bgcolor: "#669999",
+    marginTop: "10px",
+    marginBottom: "5px",
+    bgcolor: "#33334d",
     // height: 2,
   };
 
@@ -75,7 +75,7 @@ const SliderPanel = () => {
         sx={styleBtnCalc}
         variant="contained"
         color="secondary"
-        size="medium"
+        size="small"
         onClick={() => {
           setValconsumo100(defaultValues.Consumo100);
           setValpreciolitro(defaultValues.PrecioLitro);
@@ -127,13 +127,20 @@ const SliderPanel = () => {
         unit="Km"
         // amount={data.Autonomia}
         label="Autonomia"
+        textoBtnRecalc="Cal l-€"
+        handleRecalc={(e) => {
+          setValcantlitros(litros_autonomia(valautonomia, valconsumo100));
+          setValcoste(
+            coste_autonomia(valautonomia, valconsumo100, valpreciolitro)
+          );
+        }}
       />
-      <Button
-        // className="btncalculo"
+
+      {/* <Button
         sx={styleBtnCalc}
         variant="contained"
         color="primary"
-        size="medium"
+        size="small"
         onClick={() => {
           setValcantlitros(litros_autonomia(valautonomia, valconsumo100));
           setValcoste(
@@ -142,7 +149,7 @@ const SliderPanel = () => {
         }}
       >
         Calc by AUTONOMIA
-      </Button>
+      </Button> */}
 
       <Divider sx={styleDivider} />
 
@@ -156,19 +163,25 @@ const SliderPanel = () => {
         unit="L"
         // amount={data.Litros}
         label="Cantidad Fuel"
+        textoBtnRecalc={"Cal km-€"}
+        handleRecalc={(e) => {
+          setValcoste(coste_litros(valcantlitros, valpreciolitro));
+          setValautonomia(autonomia_litros(valcantlitros, valconsumo100));
+        }}
       />
-      <Button
+
+      {/* <Button
         sx={styleBtnCalc}
         variant="contained"
         color="primary"
-        size="medium"
+        size="small"
         onClick={() => {
           setValcoste(coste_litros(valcantlitros, valpreciolitro));
           setValautonomia(autonomia_litros(valcantlitros, valconsumo100));
         }}
       >
         Calc by LITROS
-      </Button>
+      </Button> */}
 
       <Divider sx={styleDivider} />
 
@@ -182,12 +195,19 @@ const SliderPanel = () => {
         unit="€"
         // amount={data.Coste}
         label="Coste"
+        textoBtnRecalc={"Cal km-l"}
+        handleRecalc={(e) => {
+          setValcantlitros(litros_coste(valcoste, valpreciolitro));
+          setValautonomia(
+            autonomia_coste(valcoste, valpreciolitro, valconsumo100)
+          );
+        }}
       />
-      <Button
+      {/* <Button
         sx={styleBtnCalc}
         variant="contained"
         color="primary"
-        size="medium"
+        size="small"
         onClick={() => {
           setValcantlitros(litros_coste(valcoste, valpreciolitro));
           setValautonomia(
@@ -196,7 +216,7 @@ const SliderPanel = () => {
         }}
       >
         Calc by COSTE
-      </Button>
+      </Button> */}
 
       <Divider sx={styleDivider} />
     </div>

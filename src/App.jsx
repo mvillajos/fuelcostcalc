@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Container maxWidth="xl" sx={{ marginTop: 4 }}>
+      <Container maxWidth="xl" sx={{ marginTop: 1 }}>
         <Grid container spacing={5} alignItems="center">
           <Grid item xs={12} md={6}>
             <SliderPanel />
