@@ -92,13 +92,15 @@ const SliderComponent = ({
   };
 
   return (
-    <Stack my={0}>
+    <Stack mt={0}>
       {/* <Stack gap={0.5}> */}
       {/* <Typography variant="h6"> */}
       {/* {unit} {amount} */}
       {/* <Grid container spacing={2} alignItems="space-between"> */}
       {/* <Grid item> */}
-      <Typography variant="h6">{label}</Typography>
+      <Typography variant="h6" color="#00cccc" fontWeight={"bold"}>
+        {label}
+      </Typography>
       {/* </Grid> */}
       {/* <Grid item>
             {textoBtnRecalc && (

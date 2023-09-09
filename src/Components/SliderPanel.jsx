@@ -96,7 +96,7 @@ const SliderPanel = () => {
         Reiniciar valores
       </Button>
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
 
       <SliderComponent
         value2={valconsumo100}
@@ -110,7 +110,7 @@ const SliderPanel = () => {
         label="Consumo x 100Km"
       />
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
 
       <SliderComponent
         value2={valpreciolitro}
@@ -124,7 +124,7 @@ const SliderPanel = () => {
         label="Precio Litro"
       />
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
 
       <SliderComponent
         value2={valautonomia}
@@ -160,7 +160,7 @@ const SliderPanel = () => {
         Calc by AUTONOMIA
       </Button> */}
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
 
       <SliderComponent
         value2={valcantlitros}
@@ -192,7 +192,7 @@ const SliderPanel = () => {
         Calc by LITROS
       </Button> */}
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
 
       <SliderComponent
         value2={valcoste}
@@ -227,7 +227,7 @@ const SliderPanel = () => {
         Calc by COSTE
       </Button> */}
 
-      <Divider sx={styleDivider} />
+      {/* <Divider sx={styleDivider} /> */}
     </div>
   );
 };
