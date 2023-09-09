@@ -19,6 +19,9 @@ const styleBtnCalc = {
 const styleSlider = {
   // color: "success.main",
   marginBottom: 0,
+  marginTop: 0,
+  trackSize: 20,
+  handleSize: 20,
   // maxWidth: "88%",
   "& .MuiSlider-thumb": {
     height: 15,
@@ -208,12 +211,15 @@ const SliderComponent = ({
       <Stack
         direction="row"
         justifyContent="flex-start"
-        my="10px"
+        mt="0.2rem"
+        mb="0"
         width={widthBlocks}
+        // height={"2.5rem"}
       >
         <Typography
+          height="2rem"
           mr="0.5rem"
-          width="2rem"
+          // height="1.5rem"
           // textAlign={"right"}
           display={"flex"}
           alignItems={"center"}
@@ -223,6 +229,9 @@ const SliderComponent = ({
           {min}
         </Typography>
         <Slider
+          // padding="0"
+
+          size={"small"}
           sx={styleSlider}
           min={min}
           max={max}
@@ -237,6 +246,7 @@ const SliderComponent = ({
           aria-labelledby="input-slider"
         />
         <Typography
+          // padding="0"
           ml="0.5rem"
           width="3rem"
           // textAlign={"left"}

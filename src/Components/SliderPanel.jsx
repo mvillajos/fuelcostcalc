@@ -30,8 +30,8 @@ const SliderPanel = () => {
   };
 
   const styleDivider = {
-    marginTop: "10px",
-    marginBottom: "5px",
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem",
     bgcolor: "#33334d",
     width: "92%",
     // height: 2,
