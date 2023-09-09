@@ -18,10 +18,11 @@ const styleBtnCalc = {
 
 const styleSlider = {
   // color: "success.main",
+  size: "medium",
   marginBottom: 0,
   marginTop: 0,
-  trackSize: 20,
-  handleSize: 20,
+  // trackSize: 20,
+  // handleSize: 20,
   // maxWidth: "88%",
   "& .MuiSlider-thumb": {
     height: 15,
@@ -92,7 +93,7 @@ const SliderComponent = ({
   };
 
   return (
-    <Stack mt={0}>
+    <Stack mt={"1rem"}>
       {/* <Stack gap={0.5}> */}
       {/* <Typography variant="h6"> */}
       {/* {unit} {amount} */}
@@ -219,9 +220,7 @@ const SliderComponent = ({
         // height={"2.5rem"}
       >
         <Typography
-          height="2rem"
           mr="0.5rem"
-          // height="1.5rem"
           // textAlign={"right"}
           display={"flex"}
           alignItems={"center"}
@@ -231,9 +230,7 @@ const SliderComponent = ({
           {min}
         </Typography>
         <Slider
-          // padding="0"
-
-          size={"small"}
+          // size={"small"}
           sx={styleSlider}
           min={min}
           max={max}
