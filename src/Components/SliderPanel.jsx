@@ -16,15 +16,24 @@ import { defaultValues, defaultCalcValues, Ctes } from "../PureJS/constants";
 
 const SliderPanel = () => {
   // const ConsumoKm = data.Consumo100 / 100;
-  const styleBtnCalc = {
+  // const styleBtnCalc = {
+  //   borderRadius: 10,
+  //   width: 150,
+  // };
+
+  const styleBtnReset = {
     borderRadius: 10,
-    width: 150,
+    width: 200,
+    // position: "absolute",
+    // top: "10px",
+    // left: "40%",
   };
 
   const styleDivider = {
     marginTop: "10px",
     marginBottom: "5px",
     bgcolor: "#33334d",
+    width: "92%",
     // height: 2,
   };
 
@@ -72,7 +81,7 @@ const SliderPanel = () => {
   return (
     <div>
       <Button
-        sx={styleBtnCalc}
+        sx={styleBtnReset}
         variant="contained"
         color="secondary"
         size="small"
@@ -84,7 +93,7 @@ const SliderPanel = () => {
           setValcoste(defaultCalcValues.Coste);
         }}
       >
-        Reset values
+        Reiniciar valores
       </Button>
 
       <Divider sx={styleDivider} />
@@ -98,7 +107,7 @@ const SliderPanel = () => {
         steps={Ctes.consumo100Step}
         unit="L"
         // amount={data.Consumo100}
-        label="Consumo 100Km"
+        label="Consumo x 100Km"
       />
 
       <Divider sx={styleDivider} />
@@ -127,7 +136,7 @@ const SliderPanel = () => {
         unit="Km"
         // amount={data.Autonomia}
         label="Autonomia"
-        textoBtnRecalc="Cal l-€"
+        textoBtnRecalc="Calc por Km"
         handleRecalc={(e) => {
           setValcantlitros(litros_autonomia(valautonomia, valconsumo100));
           setValcoste(
@@ -163,7 +172,7 @@ const SliderPanel = () => {
         unit="L"
         // amount={data.Litros}
         label="Cantidad Fuel"
-        textoBtnRecalc={"Cal km-€"}
+        textoBtnRecalc={"Calc por l"}
         handleRecalc={(e) => {
           setValcoste(coste_litros(valcantlitros, valpreciolitro));
           setValautonomia(autonomia_litros(valcantlitros, valconsumo100));
@@ -195,7 +204,7 @@ const SliderPanel = () => {
         unit="€"
         // amount={data.Coste}
         label="Coste"
-        textoBtnRecalc={"Cal km-l"}
+        textoBtnRecalc={"Calc por €"}
         handleRecalc={(e) => {
           setValcantlitros(litros_coste(valcoste, valpreciolitro));
           setValautonomia(
